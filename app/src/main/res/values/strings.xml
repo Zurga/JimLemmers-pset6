@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hacker News Reader</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="downloading_failed">Could not download the stories.</string>
+    <string name="title_activity_view_article">Article</string>
+</resources>
