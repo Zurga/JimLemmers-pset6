@@ -66,13 +66,16 @@ public class PostFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, parent, false);
+        View rootView = inflater.inflate(R.layout.fragment_main, parent, false);
+        TextView sectionLabel = (TextView) rootView.findViewById(R.id.section_label);
+        sectionLabel.setText(postType);
+        Log.d("POSTFRAGMENT", postType);
+        return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        TextView sectionLabel = (TextView) getActivity().findViewById(R.id.section_label);
-        sectionLabel.setText(postType);
+
         if (adapter.getCount() != 30) {
             if (this.postType != "Favourites") {
                 new ReadStoriesJsonTask(adapter, baseUrl).execute(baseUrl + urlSuffix);

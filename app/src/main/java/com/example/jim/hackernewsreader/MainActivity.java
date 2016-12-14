@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                             Map<String, Object> childUpdates = new HashMap<>();
                             childUpdates.put("/favourites" + key, postValues);
                             mDatabase.updateChildren(childUpdates);
+                            Toast.makeText(getApplicationContext(), "Favourite created!",
+                                    Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
