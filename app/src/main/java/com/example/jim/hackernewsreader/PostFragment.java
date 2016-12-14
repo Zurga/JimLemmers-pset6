@@ -14,6 +14,7 @@ import org.json.JSONException;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -32,7 +33,6 @@ public class PostFragment extends Fragment {
     private ArrayList<Post> posts ;
     private PostAdapter adapter;
     private String baseUrl;
-    private String[] seen;
     FragmentActivity listener;
     private JSONGetter jsonGetter = new JSONGetter();
 
@@ -61,6 +61,7 @@ public class PostFragment extends Fragment {
         baseUrl = getArguments().getString("baseUrl");
         postType = getArguments().getString("postType");
         urlSuffix = getArguments().getString("urlSuffix");
+
     }
 
     @Override
@@ -70,9 +71,17 @@ public class PostFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        AsyncTask stories = new ReadStoriesJsonTask(adapter, baseUrl).execute(baseUrl + urlSuffix);
-        ListView resultList = (ListView) view.findViewById(R.id.result_list);
-        resultList.setAdapter(adapter);
+        TextView sectionLabel = (TextView) getActivity().findViewById(R.id.section_label);
+        sectionLabel.setText(postType);
+        if (adapter.getCount() != 30) {
+            if (this.postType != "Favourites") {
+                new ReadStoriesJsonTask(adapter, baseUrl).execute(baseUrl + urlSuffix);
+            } else {
+                new ReadFavourites(adapter);
+            }
+            ListView resultList = (ListView) view.findViewById(R.id.result_list);
+            resultList.setAdapter(adapter);
+        }
     }
 
     @Override

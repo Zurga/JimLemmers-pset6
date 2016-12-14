@@ -53,7 +53,7 @@ public class JSONGetter {
                 String line;
                 while ((line = reader.readLine()) != null){
                     stringBuilder.append(line);
-                    Log.d("JSON", line);
+                    //Log.d("JSON", line);
                 }
                 inputStream.close();
             } else {

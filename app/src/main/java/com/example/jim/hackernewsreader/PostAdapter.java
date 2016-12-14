@@ -39,6 +39,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
         score.setText(post.score);
         url.setText(post.url);
         domain.setText(post.domain);
+        convertView.setTag(position);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -48,6 +49,15 @@ public class PostAdapter extends ArrayAdapter<Post> {
                 Intent showArticle = new Intent(getContext(), viewArticle.class);
                 showArticle.putExtra("url", url);
                 context.startActivity(showArticle);
+            }
+        });
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View view) {
+                int position = (Integer) view.getTag();
+                Post post = getItem(position);
+                ((MainActivity) context).createFavorite(post);
+                return true;
             }
         });
         return convertView;

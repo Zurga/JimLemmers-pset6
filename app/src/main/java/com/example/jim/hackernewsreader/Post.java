@@ -5,6 +5,9 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Post {
     public String title;
@@ -13,6 +16,9 @@ public class Post {
     public String url;
     public String domain;
 
+    public Post() {
+        // Required for the datasnapshot.
+    }
     public Post(JSONObject post) {
         try {
             this.title = post.getString("title");
@@ -27,5 +33,15 @@ public class Post {
         } catch (JSONException e) {
             Log.d("JSON", "parse error", e);
         }
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", title);
+        result.put("score", score);
+        result.put("comments", comments);
+        result.put("url", url);
+        result.put("domain", domain);
+        return result;
     }
 }
