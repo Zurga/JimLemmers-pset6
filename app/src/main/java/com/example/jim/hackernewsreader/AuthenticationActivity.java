@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * This was used to implement a correct way to sign i
+ * This was used to implement a correct way to sign in. The code is adapted from the firebase example.
  */
 
 package com.example.jim.hackernewsreader;
@@ -146,7 +146,6 @@ public class AuthenticationActivity extends AppCompatActivity implements
 
     private void signOut() {
         mAuth.signOut();
-        //updateUI(null);
     }
 
     private void linkAccount() {
