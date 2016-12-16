@@ -1,4 +1,4 @@
-# A hackernews (http://news.ycombinator.com) reader with multiple views.
+# A Hacker News (http://news.ycombinator.com) reader with multiple views.
 
 ## Description
 
