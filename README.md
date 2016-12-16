@@ -7,9 +7,12 @@ By pressing on a post in the list, the post can be read in the browser, by longp
 
 MainActivity
 ![MainActivity](./screenshot_main.png)
+
 FavouritesActivity
 ![FavouritesActivity](./favourites.png)
+
 SettingsActivity
 ![SettingsActivity](Settings.png)
+
 AuthenticationActivity
 ![AuthenticationActivity](login.png)
